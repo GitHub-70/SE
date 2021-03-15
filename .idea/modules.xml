@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_se/java_se.iml" filepath="$PROJECT_DIR$/java_se/java_se.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spi/spi.iml" filepath="$PROJECT_DIR$/spi/spi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spi/spi-boy/spi-boy.iml" filepath="$PROJECT_DIR$/spi/spi-boy/spi-boy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spi/spi-core/spi-core.iml" filepath="$PROJECT_DIR$/spi/spi-core/spi-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spi/spi-gril/spi-gril.iml" filepath="$PROJECT_DIR$/spi/spi-gril/spi-gril.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spi/spi-interface/spi-interface.iml" filepath="$PROJECT_DIR$/spi/spi-interface/spi-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spi/spiAPI-test/spiAPI-test.iml" filepath="$PROJECT_DIR$/spi/spiAPI-test/spiAPI-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/spring.iml" filepath="$PROJECT_DIR$/spring/spring.iml" />
+    </modules>
+  </component>
+</project>
