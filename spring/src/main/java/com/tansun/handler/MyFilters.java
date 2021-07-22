@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
+ * 验证码
  * 过滤器依赖于servlet
  */
 public class MyFilters extends OncePerRequestFilter {

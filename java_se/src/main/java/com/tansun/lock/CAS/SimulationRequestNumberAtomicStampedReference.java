@@ -1,5 +1,6 @@
 package com.tansun.lock.CAS;
 
+import java.lang.invoke.MethodType;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicStampedReference;
@@ -19,7 +20,7 @@ public class SimulationRequestNumberAtomicStampedReference {
     static AtomicStampedReference<Integer> atomicStampedReference = new AtomicStampedReference(count,stamp);
 
     // 模拟访问网站的方法
-    public static void request() throws InterruptedException {
+    public static void request(Integer selectMethodType) throws InterruptedException {
         // 模拟访问网站耗时5毫秒
         TimeUnit.MILLISECONDS.sleep(5);
         /**
@@ -29,10 +30,35 @@ public class SimulationRequestNumberAtomicStampedReference {
          *      2.将A的值+1，记做B：B=A+1
          *      3.将B值赋值给count coun=B
          */
-        int expectCount;
-//        while(!atomicStampedReference.compareAndSet()){}
-//        count = atomicCount++;// 其不能赋值成功------注意：TODO
+        // 如果没有修改成功，就一直修改
+//        count = atomicStampedReference.getReference();
+//        stamp = atomicStampedReference.getStamp();
+        while (!atomicStampedReference.compareAndSet(count = atomicStampedReference.getReference(),count+1, stamp = atomicStampedReference.getStamp(), stamp +1)){
+
+        }
+        System.out.println("count==="+count);
+//        System.out.println("stamp==="+stamp);
+//        switch (selectMethodType){
+//            case 1:
+//                method1();
+//                break;
+//            case 2:
+//                method2();
+//                break;
+//            case 3:
+//                method3();
+//                break;
+//            case 4:
+//                method4();
+//                break;
+//            case 5:
+//                method5();
+//                break;
+//        }
+
     }
+
+
     public static Integer getCount(){return count;}
 
     public static void main(String[] args) throws InterruptedException {
@@ -53,7 +79,7 @@ public class SimulationRequestNumberAtomicStampedReference {
                     // 模拟每个用户访问 10次
                     try {
                         for (int j = 0; j < 10; j++) {
-                            request();
+                            request(5);
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -74,4 +100,64 @@ public class SimulationRequestNumberAtomicStampedReference {
         System.out.println("耗时：" + doTime + "毫秒 ,访问总量：" + count);
     }
 
+
+    /**
+     * ---------------------------------------------------分割线-----------------------------------------------
+     */
+
+    private static void method1(){
+        while(true){
+            count = atomicStampedReference.getReference();
+            stamp = atomicStampedReference.getStamp();
+            if (atomicStampedReference.compareAndSet(count,count+1, stamp,stamp +1)){
+                System.out.println("count===="+count);
+                break;
+            }
+        }
+    }
+
+    private static void method2(){
+        while(true){
+            if (atomicStampedReference.compareAndSet(count,count+1, stamp,stamp +1)){
+                stamp = atomicStampedReference.getStamp();
+                count = atomicStampedReference.getReference();
+                System.out.println("count===="+count);
+                break;
+            }
+        }
+    }
+
+    private static void method3(){
+        while(true){
+            count = atomicStampedReference.getReference();
+
+            if (atomicStampedReference.compareAndSet(count,count+1, stamp,stamp +1)){
+
+                stamp = atomicStampedReference.getStamp();
+                System.out.println("count===="+count);
+                break;
+            }
+        }
+    }
+
+    private static void method4(){
+        while(true){
+            stamp = atomicStampedReference.getStamp();
+
+            if (atomicStampedReference.compareAndSet(count,count+1, stamp,stamp +1)){
+
+                count = atomicStampedReference.getReference();
+                System.out.println("count===="+count);
+                break;
+            }
+        }
+    }
+    private static void method5(){
+        while(true){
+            if (atomicStampedReference.compareAndSet(count = atomicStampedReference.getReference(),count+1, stamp = atomicStampedReference.getStamp(),stamp +1)){
+                System.out.println("count===="+count);
+                break;
+            }
+        }
+    }
 }

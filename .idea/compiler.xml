@@ -7,15 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spi-boy" />
-        <module name="spi-gril" />
-        <module name="spiAPI-test" />
-        <module name="spi-core" />
-        <module name="spi-interface" />
+        <module name="common" />
+        <module name="spring" />
+        <module name="java_se" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="common" target="1.8" />
+      <module name="document" target="1.8" />
       <module name="java_se" target="1.8" />
       <module name="spi" target="1.8" />
       <module name="spi-boy" target="1.8" />

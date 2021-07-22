@@ -20,7 +20,7 @@ public class SpringBean {
         AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext(ThreadPoolExecutors.class);
         ThreadPoolExecutors urlConfiguration = (ThreadPoolExecutors) acac.getBean("threadPoolExecutors");
 
-        System.out.println(urlConfiguration.toString());
+        System.out.println("ThreadPoolExecutors:"+urlConfiguration.toString());
 
     }
 }

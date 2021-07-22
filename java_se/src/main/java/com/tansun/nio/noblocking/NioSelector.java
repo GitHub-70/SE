@@ -48,9 +48,9 @@ public class NioSelector {
 //        }
 
         while (inFileChannel.read(byteBuffer) != -1){
-            byteBuffer.flip();
+            byteBuffer.flip(); // 读写模式切换
             socketChannel.write(byteBuffer);
-            byteBuffer.clear();
+            byteBuffer.clear();// 将Buffer的容量恢复至capacity，即将 可操作数据limit大小 恢复到capacity位置。
         }
         // 5.关闭通道
         socketChannel.close();
@@ -97,11 +97,12 @@ public class NioSelector {
                     FileChannel ineFileChannel = FileChannel.open(Paths.get(UrlUtils.getInputUrls()), StandardOpenOption.WRITE, StandardOpenOption.CREATE);
 //                    RandomAccessFile randomAccessFile = new RandomAccessFile(UrlUtils.getInputUrls(),"rw");
 //                    FileChannel ineFileChannel = randomAccessFile.getChannel();
-                    int len = 0;
-                    while ((len = socketChannel.read(byteBuffer)) != 0){
-                        byteBuffer.flip();
+                    int len = -1;
+                    while ((len = socketChannel.read(byteBuffer)) != -1){
+                        byteBuffer.flip();// 读写模式切换
                         ineFileChannel.write(byteBuffer);
 //                        System.out.print(new String(byteBuffer.array(), 0, len));// 输出到控制台
+                        // 将Buffer的容量恢复至capacity，即将 可操作数据limit大小 恢复到capacity位置
                         byteBuffer.clear();
                     }
                 }

@@ -19,7 +19,7 @@ public class JDKProxyTest {
         // 利用反射创建代理类的实例
         SubjectInterface subjectInterface = (SubjectInterface)jdkProxy.creatProxyInstance();
 
-        // 通过代理对象的实例 条用目标方法
+        // 通过代理对象的实例 调用目标方法
         subjectInterface.rent();
     }
 
@@ -31,7 +31,7 @@ public class JDKProxyTest {
         // 利用反射创建代理类的实例
         MethodInterceptor jdkProxyInstance = (MethodInterceptor)jdkProxyCGlib.getJDKProxyInstance();
 
-        // 通过代理对象的实例 条用目标方法
+        // 通过代理对象的实例 调用目标方法
         jdkProxyInstance.intercept(cGlibReproxy, null, null ,null);
     }
 }

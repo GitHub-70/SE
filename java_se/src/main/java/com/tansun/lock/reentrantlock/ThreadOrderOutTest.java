@@ -9,9 +9,9 @@ public class ThreadOrderOutTest {
     static Thread t1, t2, t3;
 
     public static void main(String[] args) {
-//        awiateAndSingal();
+        awiateAndSingal();
 
-        parkAndUnpark();
+//        parkAndUnpark();
     }
 
     /**

@@ -27,7 +27,7 @@ public class BufferLearning {
      * 缓冲区的四个核心属性：
      * capacity: 表示缓冲区的数据容量，一旦声明就不能改变
      * limit: 表示可操作缓冲区中的数据的界限大小。（分为写模式和读模式）
-     * position: 表示缓冲区中此时数据的位置
+     * position: 表示缓冲区中开始(读/写)数据的位置
      * mark:
      * mark <= position <= limit <= capacity
      */

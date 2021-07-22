@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--parent为 Moduel 提供统一的 版本管理，高度聚合-->
     <parent>
         <artifactId>spi</artifactId>
         <groupId>com.tansun.spi</groupId>
@@ -19,6 +20,7 @@
         </dependency>
     </dependencies>
     <groupId>com.tansun.spi</groupId>
-
+    <!--这个packaging,是否是war,jar,如果是pom,执行compile无论如何是不会在当前项目下生成target/class文件-->
+    <!--packaging 默认是jar-->
 
 </project>

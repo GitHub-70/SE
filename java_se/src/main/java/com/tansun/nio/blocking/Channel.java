@@ -203,15 +203,15 @@ public class Channel {
                 System.out.println(byteBuffer.position());
                 System.out.println(byteBuffer.limit());
                 System.out.println("=====================");
-                byteBuffer.flip(); // 底层：将缓冲区的界限设置为当前位置，并将当前位置充值为 0
-//                byteBuffer.rewind(); // 这种也可以，但不知会有什么问题 TODO
-//                byteBuffer.clear(); // 这种也可以，但不知会有什么问题 TODO
+                byteBuffer.flip(); // 底层：将缓冲区 可操作的数据界限 设置为当前位置，并将当前位置充值为 0
+//                byteBuffer.rewind(); // 这种也可以，但不知会有什么问题 --影响性能，操作数据只需操作到limit位置就可以了，此时的limit位置还在capacity位置
+//                byteBuffer.clear(); // 这种也可以，但不知会有什么问题 TODO 同上 rewind()方法
                 System.out.println(byteBuffer.position());
                 System.out.println(byteBuffer.limit());
                 // 通道将输出缓冲区数据
                 fileOutputChannel.write(byteBuffer);
                 byteBuffer.clear(); // 将缓冲区的界限设置为容量大小，并将当前位置充值为 0
-//                byteBuffer.rewind();// 这种也可以，但不知会有什么问题 TODO
+//                byteBuffer.rewind();// 这种也可以，但不知会有什么问题 --下次读数据时，只有limit大小，不能达到capacity，相当于限制了Buffer的大小
             }
         } catch (Exception e) {
             e.printStackTrace();

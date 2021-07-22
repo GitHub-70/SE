@@ -14,13 +14,12 @@ public class ObserverTest {
         concreteSubject.registerObserver(observer2);
 
         // 监听器中 监听的状态发生改变 修改被观察者的状态
-        concreteSubject.setStatus(11, 22);
+        concreteSubject.setStatus(11, 23);
 
         System.out.println("---------------------分割线----------------------");
         // 移除被观察者1
         concreteSubject.removeObserver(observer1);
-        concreteSubject.setStatus(11, 22);
-
+        concreteSubject.setStatus(11, 23);
 
 
     }

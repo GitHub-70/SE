@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--parent为 Moduel 提供统一的 版本管理，高度聚合-->
     <parent>
         <artifactId>spi</artifactId>
         <groupId>com.tansun.spi</groupId>
@@ -34,12 +35,21 @@
             <scope>compile</scope>
         </dependency>
         <!-- 依赖具体的实现2 -->
-        <!--<dependency>
+        <dependency>
             <groupId>com.tansun.spi</groupId>
             <artifactId>spi-boy</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- 再次依赖具体的实现1 -->
+        <!--<dependency>
+            <groupId>com.tansun.spi</groupId>
+            <artifactId>spi-gril</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>-->
+
     </dependencies>
 
 

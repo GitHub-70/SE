@@ -2,16 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>common</artifactId>
-        <groupId>com.tansun</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../common/pom.xml</relativePath>
-    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tansun.spi</groupId>
     <artifactId>spi</artifactId>
+    <!--这个packaging,是否是war,jar,如果是pom,执行compile无论如何是不会在当前项目下生成target/class文件-->
     <packaging>pom</packaging>
     <modules>
         <!-- 子模块 在父模块的目录下 -->
@@ -21,6 +17,8 @@
         <module>spi-core</module>
         <module>spiAPI-test</module>
     </modules>
+
+
 
 
 </project>

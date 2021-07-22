@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!-- 资源国际化测试 bean id一定是 messageSource-->
+    <!--ResourceBundle [message] not found for MessageSource: Can't find bundle for base name message, local_zh-->
+    <!--改用 org.springframework.context.support.ReloadableResourceBundleMessageSource-->
+
+        <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+            <property name="basenames">
+                <list>
+                    <!--路径没问题，能通过Ctrl+点击 进入文件-->
+<!--                    <value>properties.messages</value>-->
+                    <value>properties.i18n</value>
+                </list>
+            </property>
+        </bean>
+</beans>

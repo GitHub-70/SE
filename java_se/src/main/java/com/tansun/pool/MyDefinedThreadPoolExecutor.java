@@ -1,10 +1,8 @@
 package com.tansun.pool;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import org.springframework.stereotype.Component;
+
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -12,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Administrator
  *
  */
-
+@Component
 public class MyDefinedThreadPoolExecutor {
 	/**
 	 * 线程的最大并发量：最大线程数+任务队列数
@@ -28,7 +26,7 @@ public class MyDefinedThreadPoolExecutor {
 	private static AtomicLong atomicLong;// CAS原子类
 
 	public static void main(String[] args) {
-//		blockingQueue = new LinkedBlockingQueue<>(2);// 队列任务数为2
+		blockingQueue = new LinkedBlockingQueue<>(2);// 队列任务数为2
 		blockingQueue = new ArrayBlockingQueue<>(2);
 		atomicLong = new AtomicLong(1);// 线程安全的整数自增序列类,从1开始
 
@@ -210,4 +208,7 @@ public class MyDefinedThreadPoolExecutor {
 		});
 	}
 
+	private void get(){}
+
+	public  static  void getget(){};
 }
