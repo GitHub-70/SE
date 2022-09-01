@@ -24,12 +24,23 @@ public class DateUtils {
      * 用于时分秒命名 时间格式
      * @return
      */
-    public static String getDateString() {
+    public static String getTimeString() {
         // date 是否要用该类的变量？ TODO
         date = getDate();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HHmmss");
         String dateString = simpleDateFormat.format(date);
         return dateString;
+    }
+
+    /**
+     * 用于获取完整时间格式
+     * @return
+     */
+    public static String getDateTimeString(){
+        date = getDate();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyHHmmss");
+        String dateTime = simpleDateFormat.format(date);
+        return dateTime;
     }
 
     /**

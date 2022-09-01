@@ -2,6 +2,8 @@ package com.tansun.nio.blocking;
 
 
 import com.tansun.utlis.UrlUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 
@@ -39,6 +41,8 @@ import java.nio.file.StandardOpenOption;
 @Service
 public class NioBlocking02 {
 
+    private static final Logger logger = LoggerFactory.getLogger(NioBlocking02.class);
+
     /**
      * 客户端
      */
@@ -65,6 +69,7 @@ public class NioBlocking02 {
             System.out.println(new String(byteBuffer.array(), 0, len));
             byteBuffer.clear();
         }
+
         // 5.关闭通道
         socketChannel.close();
         inChannel.close();
@@ -89,6 +94,9 @@ public class NioBlocking02 {
             outfileChannel.write(byteBuffer);
             byteBuffer.clear();
         }
+
+        logger.info("客户端未及时连接服务端 发送数据时，是否会及时输出这句");
+
         // 6.模拟 服务端通过Socket通道，发送消息反馈给客户端
         byteBuffer.put("服务端接收数据成功".getBytes());
         byteBuffer.flip();

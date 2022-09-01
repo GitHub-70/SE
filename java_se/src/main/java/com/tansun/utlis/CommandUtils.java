@@ -24,6 +24,7 @@ public class CommandUtils {
      * @throws IOException
      * @throws InterruptedException
      */
+
     public static boolean run(boolean isStringArray, String[] commandArray, String command) throws IOException, InterruptedException {
 
         InputStream inputStream = null;
@@ -37,8 +38,10 @@ public class CommandUtils {
         try {
             // 执行命令
             if (isStringArray){
+                logger.info("执行的命令{}", commandArray);
                 process = Runtime.getRuntime().exec(commandArray);
             } else {
+                logger.info("执行的命令{}", command);
                 process = Runtime.getRuntime().exec(command);
             }
 

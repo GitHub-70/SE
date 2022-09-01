@@ -3,6 +3,8 @@ package com.tansun.lock.reentrantlock.AQS;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 /**
+ * AQS:AbstractQueuedSynchronizer
+ *
  * 用到AQS:
  *      ReentrantLock
  *      CountDownLatch
@@ -21,7 +23,7 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
  *          volatile int waitStatus;
  *          volatile Node prev;     // 头部
  *          volatile Node next;     // 尾部
- *          volatile Thread thread;
+ *          volatile thread thread;
  *          Node nextWaiter;
  *      }
  *
@@ -30,12 +32,24 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
  */
 public class SyncImpl extends AbstractQueuedSynchronizer {
 
+    /**
+     * 该方法为钩子方法，父类空实现
+     * 子类去实现：尝试去加锁
+     * @param arg
+     * @return
+     */
     @Override
     protected boolean tryAcquire(int arg) {
         return super.tryAcquire(arg);
 
     }
 
+    /**
+     * 该方法为钩子方法，父类空实现
+     * 子类去实现：尝试去释放锁
+     * @param arg
+     * @return
+     */
     @Override
     protected boolean tryRelease(int arg) {
         return super.tryRelease(arg);

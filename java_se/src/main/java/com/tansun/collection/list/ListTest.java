@@ -18,9 +18,11 @@ public class ListTest {
     private static List<String> list;
 
     public static void main(String[] args) {
-        List<String> list = add();
-        List<String> list2 = removeList(list);
-        System.out.println(Arrays.toString(list2.toArray()));
+//        List<String> list = add();
+//        List<String> list2 = removeList(list);
+//        System.out.println(Arrays.toString(list2.toArray()));
+
+        iteratorOrder();
 
     }
 
@@ -43,10 +45,32 @@ public class ListTest {
         for (int i = 0; i < list.size(); i++) {
             if (("BBB").equals(list.get(i))) {
                 list.add("EEE");
-//                list.remove("BBB");
+//                list.remove("BBB");// 正向遍历--数据漏删
             }
             logger.info("第{}次遍历", i);
         }
         return list;
+    }
+
+
+    /* *
+     * @Author 吴槐
+     * @Description  验证增强for循环的迭代顺序
+     * @Date 15:16 2022/6/17
+     * @Param 
+     * @return java.util.List
+     *       
+     **/
+    private static void iteratorOrder(){
+        List<String> list = new ArrayList<>();
+        list.add("A1");
+        list.add("B");
+        list.add("C");
+        list.add("A3");
+        list.add("D");
+        list.add("E");
+        for (String val: list ){
+            System.out.println(val);
+        }
     }
 }

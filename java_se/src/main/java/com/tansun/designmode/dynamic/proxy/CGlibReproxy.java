@@ -6,6 +6,9 @@ import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
+/**
+ * 利用的是spring的核心包 中的 MethodInterceptor
+ */
 public class CGlibReproxy implements MethodInterceptor {
 
     // 根据一个类型 产生代理类

@@ -11,8 +11,12 @@
             <property name="basenames">
                 <list>
                     <!--路径没问题，能通过Ctrl+点击 进入文件-->
-<!--                    <value>properties.messages</value>-->
-                    <value>properties.i18n</value>
+                    <value>i18n</value>
+                    <value>messages</value>
+
+                    <!--当 i18n_zh_CN.properties 文件放在properties目录下，用properties.i18n配置value，会找不到配置信息-->
+                    <value>properties.messages</value>
+                    <!--<value>properties.i18n</value>-->
                 </list>
             </property>
         </bean>

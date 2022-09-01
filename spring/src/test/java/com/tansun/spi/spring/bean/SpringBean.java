@@ -1,6 +1,6 @@
 package com.tansun.spi.spring.bean;
 
-import com.tansun.pool.ThreadPoolExecutors;
+import com.tansun.thread.pool.ThreadPoolExecutors;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -20,7 +20,7 @@ public class SpringBean {
         AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext(ThreadPoolExecutors.class);
         ThreadPoolExecutors urlConfiguration = (ThreadPoolExecutors) acac.getBean("threadPoolExecutors");
 
-        System.out.println("ThreadPoolExecutors:"+urlConfiguration.toString());
+        System.out.println("ThreadPoolExecutors:"+urlConfiguration.getClass().getName());
 
     }
 }

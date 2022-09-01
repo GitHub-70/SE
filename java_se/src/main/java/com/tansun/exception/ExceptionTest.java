@@ -15,17 +15,23 @@ public class ExceptionTest {
     public static void main(String[] args) {
        try {
             // 日志输出的正确方式
-//           String s = nullPointerExceptionBack();
-//            logger.info(s);
+           String s = nullPointerExceptionBack();
+            logger.info(s);
             // 日志输出的正确方式
-//           nullPointerException();
+           try {
+               logger.info("这里捕获了异常，未抛出，是否继续执行");
+               nullPointerException();
+           } catch (RuntimeException e){
+
+           }
+        logger.info("上面捕获了异常，未抛出，这里继续执行");
 
 
-        ExceptionTest exceptionTest = new ExceptionTest();
-        System.out.print("请输入您的年龄：");
-        System.out.println("您的年龄：" + exceptionTest.inputAge(false));
+//        ExceptionTest exceptionTest = new ExceptionTest();
+//        System.out.print("请输入您的年龄：");
+//        System.out.println("您的年龄：" + exceptionTest.inputAge(false));
 
-           doException();
+//            doException();
        } catch (RuntimeException e){
            logger.error("main方法:{}",e.getMessage());
        }

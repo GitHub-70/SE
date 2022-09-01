@@ -1,12 +1,10 @@
 package com.tansun.schedule;
 
-import com.tansun.pool.MyDefinedThreadPoolExecutor;
+import com.tansun.thread.pool.MyDefinedThreadPoolExecutor;
 import org.junit.Test;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class SpringTimingTaskTest {
 

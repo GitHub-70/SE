@@ -13,6 +13,9 @@ import java.util.concurrent.locks.Lock;
  *      CountDownLatch
  *      ReentrantReadWriteLock
  *      Semaphore
+ *
+ *  加锁与释放锁的操作 均需具备原子性
+ *  加锁与释放锁的操作 均需同一线程
  */
 public class MyLock implements Lock {
 
@@ -69,9 +72,10 @@ public class MyLock implements Lock {
         protected boolean tryAcquire(int arg) {
             // 断言(明确肯定) 当arg是1时，就正常通过，否则就报程序错误err
             assert arg == 1;
-            // 如果自旋成功，将当前线程赋值给。。并且返回true,否则就返回false
+            // 如果自旋成功，设置互斥锁 被当前线程独占,并且返回true,否则就返回false
             if (compareAndSetState(0, 1)){
                 // 设置互斥锁的拥有者 为当前线程
+                // 此操作的目的是 加锁与释放锁 要为同一线程
                 setExclusiveOwnerThread(Thread.currentThread());
                 return true;
             }
@@ -82,8 +86,9 @@ public class MyLock implements Lock {
         @Override
         protected boolean tryRelease(int arg) {
             assert arg == 1;
-            // 如果不是当前线程，抛出MonitorStateException
+            // 如果互斥锁的拥有者不是当前线程，抛出MonitorStateException
             if (!isHeldExclusively()) throw new IllegalMonitorStateException();
+            // 否则将锁的拥有者 置为null，状态置为0，并返回true
             setExclusiveOwnerThread(null);
             setState(0);
             return true;

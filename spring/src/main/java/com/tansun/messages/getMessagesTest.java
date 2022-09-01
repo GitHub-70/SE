@@ -18,8 +18,14 @@ public class getMessagesTest {
          */
         MessageSource springContext = new ClassPathXmlApplicationContext("/properties/application.xml");
         Object[] agr = {"happy", Calendar.getInstance().getTime()};
-        String userinfo = springContext.getMessage("userinfo", agr, Locale.CHINA);
 
-        System.out.println(userinfo);
+        String userinfo = springContext.getMessage("userinfo", agr, Locale.CHINA);
+        System.out.println("userinfo--->"+userinfo);
+
+        String userinfoMasg = springContext.getMessage("userinfoMasg", agr, Locale.US);
+        System.out.println("userinfoMasg--->"+userinfoMasg);
+
+        String userinfoMessages = springContext.getMessage("userinfoMessages", agr, Locale.CHINA);
+        System.out.println("userinfoMessages--->"+userinfoMessages);
     }
 }

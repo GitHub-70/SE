@@ -1,7 +1,7 @@
 package com.tansun.schedule;
 
-import com.tansun.pool.MyDefinedThreadPoolExecutor;
-import com.tansun.pool.Task.CallTask;
+import com.tansun.thread.pool.MyDefinedThreadPoolExecutor;
+import com.tansun.thread.pool.Task.CallTask;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

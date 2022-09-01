@@ -12,9 +12,9 @@ public class AnnotationsTest {
 	
 	public static void main(String[] args) {
 		
-//		applicationLoadOrderTest1();
+		applicationLoadOrderTest1();
 		
-		applicationLoadOrderTest2();
+//		applicationLoadOrderTest2();
 		
 //		applicationLoadOrderTest3();
 	}
@@ -26,7 +26,8 @@ public class AnnotationsTest {
 	 */
 	private static void applicationLoadOrderTest1() {
 		// 在初始化Spring容器时，此时Job对象 已被创建
-		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Job.class);
+		AnnotationConfigApplicationContext annotationConfigApplicationContext =
+				new AnnotationConfigApplicationContext(Job.class);
 		// User对象注册到Spring容器中，并不会立马创建User对象
 		annotationConfigApplicationContext.register(User.class);
 		// 在使用User对象时，创建User对象----可注释该方法查看
@@ -39,7 +40,8 @@ public class AnnotationsTest {
 	 * User对象才会被注入，否则 autowiredTest2 不会被执行
 	 */
 	private static void applicationLoadOrderTest2() {
-		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(User.class);
+		AnnotationConfigApplicationContext annotationConfigApplicationContext =
+				new AnnotationConfigApplicationContext(User.class);
 		annotationConfigApplicationContext.register(Job.class);
 		annotationConfigApplicationContext.getBean("job");
 	}
@@ -47,7 +49,8 @@ public class AnnotationsTest {
 	 * 初始化Spring容器失败
 	 */
 	private static void applicationLoadOrderTest3() {
-		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
+		AnnotationConfigApplicationContext annotationConfigApplicationContext =
+				new AnnotationConfigApplicationContext();
 		annotationConfigApplicationContext.register(User.class);
 		annotationConfigApplicationContext.register(Job.class);
 //		annotationConfigApplicationContext.getBean("job");
@@ -114,4 +117,3 @@ class Job{
 		System.out.println("--Job对象创建了--");
 	}
 }
-

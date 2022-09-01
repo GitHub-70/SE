@@ -8,6 +8,8 @@ public class JDKProxy implements InvocationHandler {
 
     private Object object;
 
+
+    // 通过构造方法实例化 被代理对象
     public JDKProxy(Object object){
         this.object = object;
     };

@@ -1,0 +1,44 @@
+package com.tansun.designmode.observer.pull;
+
+import java.util.Scanner;
+
+/**
+ * 观察者2(监听器-相当于zookeeper注册中心)
+ *      提供观察者的状态，及更新方法
+ */
+public class Observer2 implements Observer {
+
+    int stastus1;
+    int stastus2;
+
+    @Override
+    public void update(int stastus1, int stastus2, String message, Subject observable) {
+        this.stastus1 = stastus1;
+        this.stastus2 = stastus2;
+        // Interger转换为 八进制数
+        System.out.println("观察者2状态stastus1：toOctalString=="+Integer.toOctalString(this.stastus1));
+        // 返回2的最大次方 的数，且这个数小于等于 传入值
+        System.out.println("观察者2状态stastus2：highestOneBit=="+Integer.highestOneBit(this.stastus2));
+
+        // 基于事件（即update）的 回调函数，回调 被观察者的回调函数
+        System.out.println("是否进行客户端升级？ 输入 1 则进行升级，否则不升级");
+        Scanner input = new Scanner(System.in);
+        if (input.next().equals("1")){
+            observable.clientUpgrade_pull();
+        }
+
+        /**
+         * 算法思想：
+         *      1.这个数是2进制数
+         *      2.最大位的2进制数
+         *      即 取这个数的 最大位 二进制数，其他的bit位 都为零
+         * 实现：
+         *      1.fori遍历 2的i次方（1 << i） 与 传入值 进行比较
+         *                               当大于 传入值 取（1 << i-1）
+         *                               当等于 传入值 取（1 << i）
+         *      2.利用二进制的 或（与） 运算，将其他的bit位 都为零
+         *      jdk作者采用的这种算法
+         */
+    }
+
+}

@@ -1,6 +1,6 @@
 package com.tansun.utlis.classlayout;
 
-import com.tansun.pool.ThreadPool;
+import com.tansun.thread.pool.ThreadPool;
 import org.openjdk.jol.info.ClassLayout;
 
 /**
@@ -24,8 +24,8 @@ public class ClassLaYoutUtileTest {
          *                  没有明显的资源竞争，直接升级为偏向锁
          */
 
-//        Thread.sleep(4000);
-//        Thread.sleep(4200);
+//        thread.sleep(4000);
+//        thread.sleep(4200);
 
         Object o = new Object();// 无所状态--第一个字节码为 00000001
         // 利用ClassLayout工具类，解析实例,并转成可打印的内容输出

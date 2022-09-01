@@ -9,10 +9,16 @@ package com.tansun.nio.properties;
  * @Copyright © 2020 阿里巴巴
  */
 
+
+import com.tansun.utlis.DateUtils;
+import org.apache.ibatis.parsing.PropertyParser;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Set;
 
@@ -26,9 +32,41 @@ import java.util.Set;
  */
 public class PropertiesTest {
     public static void main(String[] args) {
-        store();
+//        store();
+        stringFormat();
     }
 
+
+    private static void stringFormat(){
+
+        String stringTemplet = "尊敬的${customer1}、${customer2}、${customer3}客户先生/女士," +
+                "今天是${date},祝您们有个好的心情！";
+
+        Calendar calendar = Calendar.getInstance();
+        System.out.println(calendar.getTime());
+
+
+        Properties properties = new Properties();
+        // 添加数据
+        properties.put("customer1", "zhaoliying");
+        properties.put("customer2", "gulinazha");
+        properties.put("customer3", "gutianle");
+        properties.put("date", DateUtils.getDateYear());
+
+        // mybaits下的包
+        String parse = PropertyParser.parse(stringTemplet, properties);
+        System.out.println(parse);
+    }
+
+    
+    /* *
+     * @Author 吴槐
+     * @Description 通过 Properties与 OutputStream 持久化数据
+     * @Date 9:39 2022/7/28
+     * @Param 
+     * @return void
+     *       
+     **/
     private static void store() {
         Properties properties = new Properties();
         // 添加数据

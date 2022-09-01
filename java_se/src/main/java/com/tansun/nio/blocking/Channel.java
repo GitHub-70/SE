@@ -26,6 +26,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * https://blog.csdn.net/forezp/article/details/88414741
+ *
  * 通道（Channel）的主要实现类
  * java.nio.channels.channel接口
  * |--FileChannel              本地

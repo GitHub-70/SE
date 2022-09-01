@@ -10,6 +10,8 @@ package com.tansun.nio.blocking;
  */
 
 import com.tansun.utlis.UrlUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -33,6 +35,8 @@ import java.nio.file.StandardOpenOption;
  *      是SelecttableChannel的多路复用器
  */
 public class NioBlocking01 {
+
+    private static final Logger logger = LoggerFactory.getLogger(NioBlocking01.class);
 
     /**
      * 客户端
@@ -74,6 +78,9 @@ public class NioBlocking01 {
             outfileChannel.write(byteBuffer);
             byteBuffer.clear();
         }
+
+        logger.info("客户端未及时连接服务端 发送数据时，是否会及时输出这句");
+
         // 6.关闭通道
         outfileChannel.close();
         socketChannel.close();

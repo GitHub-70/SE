@@ -1,5 +1,8 @@
 package com.tansun.utlis;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author 吴槐
  * @version V1.0
@@ -10,6 +13,8 @@ package com.tansun.utlis;
  */
 
 public class UrlUtils {
+
+    private static final Logger logger = LoggerFactory.getLogger(UrlUtils.class);
     private static String url = "E:/文本文件/Linux常用命令.txt";
     private static String url1 = "E:/xjpic.jpg";
     private static String inputUrl = "E:/file/img";
@@ -24,10 +29,11 @@ public class UrlUtils {
 
     public static String getInputUrls() {
         // 获取时间戳字符串
-        String dateString = DateUtils.getDateString();
+        String dateString = DateUtils.getDateTimeString();
         String fileName = url.substring(url.lastIndexOf("/"), url.lastIndexOf("."));
         String fileNameSuf = url.substring(url.lastIndexOf("."));
-        String inputUrlFinal = inputUrl + "/" + fileName + dateString + fileNameSuf;
+        String inputUrlFinal = inputUrl + fileName + dateString + fileNameSuf;
+        logger.info("inputUrlFinal:[{}]",inputUrlFinal);
         return inputUrlFinal;
     }
 }
