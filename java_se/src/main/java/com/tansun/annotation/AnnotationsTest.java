@@ -2,17 +2,64 @@ package com.tansun.annotation;
 
 import javax.annotation.PostConstruct;
 
+import com.tansun.annotation.validateannotation.ParamsCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.util.*;
+
 
 public class AnnotationsTest {
-	
+
+
+	private static String aa = "1";
+	private static Integer ab;
+	private static int aj;
+	private static Date ac;
+	private static BigDecimal ad = new BigDecimal(0);
+	private static User ae;
+	private static List<User> af;
+	private static Map<String,User> ag;
+	private static HashMap<String,User> ah;
+	private static ParamsCheck ai;
+	private static Byte[] ak = new Byte[1];
+	private static short[] am = new short[2];
+	private static String[][] al;
+
 	public static void main(String[] args) {
-		
-		applicationLoadOrderTest1();
+		try {
+			Field[] aa = AnnotationsTest.class.getDeclaredFields();
+			for (Field s : aa){
+//				System.out.println(s.getType());
+//				System.out.println(s.getGenericTdype());
+//				System.out.println(s.getType().getName().substring(s.getType().getName().lastIndexOf(".") + 1));
+				Object o = s.get(s);
+				System.out.println(o);
+//				s.set(s,"2");
+//				System.out.println(s.get(s));
+
+//				System.out.println(int.class.isPrimitive());
+
+				// 得到当前属性的get方法
+//				String propertyName = s.getName();
+//				String firstLetter = propertyName.substring(0, 1).toUpperCase();
+//				String getter = "get" + firstLetter + propertyName.substring(1);
+//				Method method0 = AnnotationsTest.class.getMethod(getter);
+//				Object value = method0.invoke(new AnnotationsTest());
+//				System.out.println(value);
+			}
+
+			System.out.println();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+//		applicationLoadOrderTest1();
 		
 //		applicationLoadOrderTest2();
 		

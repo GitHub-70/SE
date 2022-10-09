@@ -17,7 +17,7 @@ public class ExportUtil {
                                        LinkedHashMap<String, String> linkedHashMap,
                                        String sheetName, int sheetSize,
                                        OutputStream outputStream){
-        if (list.size() == 0 || list == null){
+        if (null == list || list.size() == 0){
             throw new RuntimeException("数据源 中没有数据");
         }
     }
