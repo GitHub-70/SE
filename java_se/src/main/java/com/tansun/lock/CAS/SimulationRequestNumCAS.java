@@ -74,12 +74,11 @@ public class SimulationRequestNumCAS {
         // 线程数量
         Integer threadSize = 100;
         // 设定初始值大小为threadSize
-        CountDownLatch countDownLatch = new CountDownLatch(threadSize);
+        final CountDownLatch countDownLatch = new CountDownLatch(threadSize);
 
         // 模拟100个用户来访问网站，每个用户访问10次
         for (int i = 0; i < userNum; i++) {
             new Thread(new Runnable() {
-                @Override
                 public void run() {
                     // 模拟每个用户访问 10次
                     try {
