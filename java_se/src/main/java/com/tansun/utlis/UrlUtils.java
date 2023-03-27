@@ -17,7 +17,7 @@ public class UrlUtils {
     private static final Logger logger = LoggerFactory.getLogger(UrlUtils.class);
     private static String url = "E:/文本文件/Linux常用命令.txt";
     private static String url1 = "E:/xjpic.jpg";
-    private static String inputUrl = "E:/file/img";
+    private static String inputUrl = "E:/file/";
 
     // 让构造函数私有化，这样该类不会被实例化
     private UrlUtils() {

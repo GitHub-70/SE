@@ -62,14 +62,15 @@ import java.util.Set;
  */
 public class Channel {
 
-    private static String url = "E:/xjpic.jpg";
+    private static String url = "E:\\idea_workspace\\projecte-SpringBoot\\CGB-DB-SYS-V3.03\\" +
+            "src\\main\\resources\\sql\\dbms_test.sql";
 
 
     public static void main(String[] args) throws Exception {
         LocalDateTime localDateTime = LocalDateTime.now();
 //        getChannelCopy();
-//        getOpen();
-        getOpenTransfer();
+        getOpen();
+//        getOpenTransfer();
 //        scatterAndGather();
 //        getCharset();
 //        System.out.println(url.substring(3));
@@ -91,6 +92,13 @@ public class Channel {
 
     /**
      * 分散与聚集
+     *      分散（scatter）从Channel中读取是指在读操作时将读取的数据写入多个buffer中。
+     * 因此，Channel将从Channel中读取的数据“分散（scatter）”到多个Buffer中。
+     *      聚集（gather）写入Channel是指在写操作时将多个buffer的数据写入同一个Channel，
+     * 因此，Channel 将多个Buffer中的数据“聚集（gather）”后发送到Channel。
+     *
+     * scatter / gather经常用于需要将传输的数据分开处理的场合，例如传输一个由消息头和消息体组成的消息，
+     * 你可能会将消息体和消息头分散到不同的buffer中，这样你可以方便的处理消息头和消息体。
      */
     private static void scatterAndGather() throws IOException {
         RandomAccessFile randomAccessFile = new RandomAccessFile(url, "rw");
@@ -127,6 +135,7 @@ public class Channel {
 
     /**
      * 使用直接缓冲区（内存文件映射）的方式完成文件复制
+     * MappedByteBuffer（适用于大文件做内存映射，内存文件映射都是一个昂贵的操作）
      */
     private static void getOpenTransfer() throws IOException {
         // 获取输入输出通道
@@ -147,11 +156,12 @@ public class Channel {
 
     /**
      * 使用直接缓冲区（内存文件映射）的方式完成文件复制
+     * MappedByteBuffer（适用于大文件做内存映射，内存文件映射都是一个昂贵的操作）
      */
     private static void getOpen() throws IOException {
         LocalDateTime localDateTime = LocalDateTime.now();
-        int start = localDateTime.getNano();
-        System.out.println(start);
+        // 此方法返回一个整数值，该整数值是一个从0到999、999、999的整数值，表示纳秒的值。
+//        int start = localDateTime.getNano();
         long start1 = System.currentTimeMillis();
         System.out.println(start1);
         // 获取本地文件输入通道
@@ -160,7 +170,7 @@ public class Channel {
         // 支持读写模式 CREATE_NEW-没有就新建，有就报错
         FileChannel fileOutputChannel = FileChannel.open(Paths.get(inputUrl), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE_NEW);
 
-        // 内存映射，分配直接缓冲区
+        // 内存映射，分配直接缓冲区（你可以把整个文件(不管文件有多大)看成是一个ByteBuffer）
         MappedByteBuffer inMappedBBF = fileInputChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileInputChannel.size());
         MappedByteBuffer outMappedBBF = fileOutputChannel.map(FileChannel.MapMode.READ_WRITE, 0, fileInputChannel.size());
 
@@ -172,10 +182,8 @@ public class Channel {
 
         fileOutputChannel.close();
         fileInputChannel.close();
-        int end = localDateTime.getNano();
         long end1 = System.currentTimeMillis();
         System.out.println(end1 - start1);
-        System.out.println(end - start);
     }
 
     /**
@@ -205,7 +213,7 @@ public class Channel {
                 System.out.println(byteBuffer.position());
                 System.out.println(byteBuffer.limit());
                 System.out.println("=====================");
-                byteBuffer.flip(); // 底层：将缓冲区 可操作的数据界限 设置为当前位置，并将当前位置充值为 0
+                byteBuffer.flip(); // 底层：将缓冲区 可操作的数据界限 设置为当前位置，并将当前位置重置为 0
 //                byteBuffer.rewind(); // 这种也可以，但不知会有什么问题 --影响性能，操作数据只需操作到limit位置就可以了，此时的limit位置还在capacity位置
 //                byteBuffer.clear(); // 这种也可以，但不知会有什么问题 TODO 同上 rewind()方法
                 System.out.println(byteBuffer.position());

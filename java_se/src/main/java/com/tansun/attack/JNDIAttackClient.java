@@ -10,7 +10,6 @@ import java.net.MalformedURLException;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.Hashtable;
 
 /**
  * JNDI攻击

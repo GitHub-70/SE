@@ -6,6 +6,7 @@ public class ForTest {
      * https://www.cnblogs.com/caoxb/p/15526123.html
      * 对于程序而言，外层循环越大，性能越低，对于数据库而言，永远是小的数据集放在最外层
      * 程序设计原则：小的循环放到最外层，大的循环放在最小层
+     *
      * @param args
      */
 
@@ -131,4 +132,5 @@ public class ForTest {
         long nanoTime2 = System.currentTimeMillis();
         System.out.println("test6总耗时:" + (nanoTime2 - nanoTime1));
     }
+
 }

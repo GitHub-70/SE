@@ -1,7 +1,7 @@
 package com.tansun.java8characteristics;
 
-import sun.awt.SunHints;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -173,6 +173,7 @@ public class ListToMap {
 class Person{
     String name;
     Integer age;
+    BigDecimal totAmt;
     String addr;
 
     public String getName() {
@@ -191,6 +192,14 @@ class Person{
         this.age = age;
     }
 
+    public BigDecimal getTotAmt() {
+        return totAmt;
+    }
+
+    public void setTotAmt(BigDecimal totAmt) {
+        this.totAmt = totAmt;
+    }
+
     public String getAddr() {
         return addr;
     }
@@ -204,6 +213,7 @@ class Person{
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", totAmt=" + totAmt +
                 ", addr='" + addr + '\'' +
                 '}';
     }
@@ -211,6 +221,12 @@ class Person{
     public Person(String name, Integer age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Person(String name, Integer age, BigDecimal totAmt) {
+        this.name = name;
+        this.age = age;
+        this.totAmt = totAmt;
     }
 
     public Person(String name, String addr) {

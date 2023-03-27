@@ -1,7 +1,11 @@
 package com.tansun.file;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
+
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -10,11 +14,14 @@ import java.util.List;
 public class ReadFileWay {
 
     public static void main(String[] args) throws IOException {
-        readAllLines();
+//        readAllLines();
 //        readAllLine();
+//        readLineByFileUtils();
 
 //        appendDataToFile1();
 //        appendDataToFile2();
+
+        readLineByNum("",50);
     }
 
     /**
@@ -52,6 +59,18 @@ public class ReadFileWay {
         if (null != fileReader){
             fileReader.close();
         }
+    }
+
+    private static void readLineByFileUtils() throws IOException {
+        File file = new File("E:\\文本文件\\redis常用命令.txt");
+        LineIterator lineIterator = FileUtils.lineIterator(file);
+
+        while (lineIterator.hasNext()){
+            String line = lineIterator.nextLine();
+            System.out.println(line);
+        }
+        //
+        LineIterator.closeQuietly(lineIterator);
     }
 
     /**
@@ -125,6 +144,48 @@ public class ReadFileWay {
             fileWriter.close();
         }
 
+    }
+
+
+    /**
+     * 从文件中，指定行数读取数据
+     * @param txtPath 文件路径
+     * @param lineNum 行号
+     * @throws IOException
+     */
+    public static void readLineByNum(String txtPath,int lineNum) throws IOException {
+        FileWriter writer;
+        //文件总行数
+        txtPath = "E:\\文本文件\\redis常用命令.txt";
+        long count1 = Files.lines(Paths.get(txtPath)).count();
+        System.out.println("文件总行数："+count1);
+
+        StringBuffer sb = new StringBuffer();
+        LineNumberReader lnr = new LineNumberReader(new FileReader(txtPath));
+        String line = lnr.readLine();
+
+        while (line!=null){
+            // 大于等于起始行，小于等于结束行
+            if (lnr.getLineNumber() >= lineNum && lnr.getLineNumber()<=count1-2){
+                sb.append(line);
+                sb.append("\r\n");
+            }
+            // 拼接结束，在读取下一行
+            line = lnr.readLine();
+        }
+        String newTxtPath = "E:\\file\\20230309\\stringformat.txt";
+        File file = new File(newTxtPath);
+        if (!file.getParentFile().exists()){
+            file.getParentFile().exists();
+            if (!file.exists()){
+                file.createNewFile();
+            }
+        }
+
+        writer = new FileWriter(newTxtPath,false);
+        writer.write(sb.toString());
+        writer.close();
+        System.out.println(sb.toString());
     }
 
 }

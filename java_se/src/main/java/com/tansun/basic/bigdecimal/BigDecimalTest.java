@@ -28,7 +28,9 @@ public class BigDecimalTest {
 
 //        bigDecimal_ROUND_DOWN();
 
-        bigDecimalToStringFromat();
+//        bigDecimalToStringFromat();
+
+        bigDecimalOfAbs();
     }
 
     private static void bigDecimal_round_up(){
@@ -148,5 +150,14 @@ public class BigDecimalTest {
         // 工程记数法表示一个数 工程记数法是一种工程计算中经常使用的记录数字的方法，
         // 与科学技术法类似，但要求10的幂必须是3的倍数
         System.out.println("工程记数法表示一个数"+bigDecimal.toEngineeringString());
+    }
+
+    private static void bigDecimalOfAbs(){
+        BigDecimal bigDecimal = new BigDecimal("1.2215667"); // 这么写不会丢精度
+        BigDecimal bigDecima2 = new BigDecimal("-1.2215667"); // 这么写不会丢精度
+
+        System.out.println(bigDecimal);
+        System.out.println(bigDecima2.abs());// 取绝对值
+        System.out.println(bigDecima2.negate()); // 取反
     }
 }

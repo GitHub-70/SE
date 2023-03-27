@@ -1,5 +1,8 @@
 package com.tansun.collection.list;
 
+import com.google.common.collect.Lists;
+import com.tansun.basic.pojo.SysRole;
+import com.tansun.basic.pojo.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,12 +21,41 @@ public class ListTest {
     private static List<String> list;
 
     public static void main(String[] args) {
-//        List<String> list = add();
-//        List<String> list2 = removeList(list);
-//        System.out.println(Arrays.toString(list2.toArray()));
+//        listAddRemove();
 
-        iteratorOrder();
+//        iteratorOrder();
 
+        listObjectTransfer();
+    }
+
+    /**
+     * list对象转换
+     */
+    private static void listObjectTransfer() {
+        List<SysUser> sysUsers = new ArrayList<>();
+        List<SysRole> sysRoles = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            SysRole sysRole = new SysRole();
+            sysRole.setId(i+1);
+            sysRole.setName("小白"+i);
+            sysRole.setNote("备注"+i);
+            sysRole.setCreatedUser("admin");
+            sysRoles.add(sysRole);
+        }
+        sysUsers = Lists.transform(sysRoles, sysRole -> {
+            SysUser sysUser = new SysUser();
+            sysUser.setUsername(sysRole.getName());
+            sysUser.setCreatedUser(sysRole.getCreatedUser());
+            return sysUser;
+        });
+        System.out.println(sysUsers.toString());
+    }
+
+
+    private static void listAddRemove() {
+        List<String> list = add();
+        List<String> list2 = removeList(list);
+        System.out.println(Arrays.toString(list2.toArray()));
     }
 
     private static List<String> add() {

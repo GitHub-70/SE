@@ -1,6 +1,7 @@
 package com.tansun.keywork;
 
-import sun.misc.Contended;
+
+
 
 import java.util.concurrent.CountDownLatch;
 
@@ -12,7 +13,13 @@ public class CacheLinePadding {
 
     public static Long count = 100000000l;
 
-    @Contended // 必须打开参数 -XX:-RestrictContended
+    /**
+     * java8 中的 @Contended
+     * https://blog.csdn.net/qq_27680317/article/details/78486220
+     *
+     * https://blog.csdn.net/wenyuan65/article/details/102534448
+     */
+    @sun.misc.Contended // 必须打开参数 -XX:-RestrictContended
     private static class  T {
         private volatile long x = 0l;// 8字节
     }
