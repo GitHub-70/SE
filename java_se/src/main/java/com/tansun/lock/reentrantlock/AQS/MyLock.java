@@ -24,7 +24,7 @@ public class MyLock implements Lock {
     public void lock() {
         /**
          * 模板方法模式
-         * 调用AQS的acquire()方法,底层调用tryAcquire()方法时，
+         * 调用AQS的acquire()方法,底层调用tryAcquire()钩子方法时，
          * 进入自己的实现tryAcquire()方法
          */
         sync.acquire(1);

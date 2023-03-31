@@ -6,6 +6,21 @@ import java.util.List;
 public class TestMain {
 
     public static void main(String[] args) {
+
+//        extracted();
+
+        extracted1();
+    }
+
+    /**
+     * 二进制数 取余
+     */
+    private static void extracted1() {
+        int total = 4;
+        System.out.println(3 & (total -1));
+    }
+
+    private static void extracted() {
         boolean result = true;
 
         List<Boolean> booleans = new ArrayList<>();
