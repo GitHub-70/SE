@@ -5,9 +5,11 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 解决cache line伪共享问题
  * Disruptor
+ * 同一个代码，不同的java版本， 性能相差明显
  */
 public class RingBufferTest01 {
 
+    // 一亿次
     public static Long count = 100000000l;
 
     private static class  T {

@@ -31,6 +31,9 @@ public class FileFilter {
         // 通过文件过滤器，来获取指定的所有文件
         getAllFile(file);
 
+        // 递归删除文件及目录
+        File file1 = new File("E:\\file\\testdelete");
+        deleteAllFile(file1);
     }
     
     /* *
@@ -59,5 +62,39 @@ public class FileFilter {
             
         }
         
+    }
+
+    /**
+     * 递归删除文件、文件目录
+     * @param file
+     */
+
+    private static void deleteAllFile(File file){
+
+        // pathname是构造方法传进来的路径
+        // 重写 FileFilter 接口的 boolean accept(File pathname)方法
+        File[] fileFilter = file.listFiles();
+        if (fileFilter.length==0){
+            // 没有文件或文件目录直接返回
+            return;
+        }
+
+        File isDirectory = null;
+        for (File fileNamePath : fileFilter) {
+            if (fileNamePath.isDirectory()){
+                isDirectory = fileNamePath;
+                // 递归调用自身
+                deleteAllFile(fileNamePath);
+            } else {
+                fileNamePath.delete();
+            }
+
+        }
+        // 删除父文件目录
+        if (isDirectory != null){
+            isDirectory.delete();
+        }
+        // 删除最上层文件夹
+        fileFilter[0].delete();
     }
 }

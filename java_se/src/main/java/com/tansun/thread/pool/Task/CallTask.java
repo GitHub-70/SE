@@ -12,31 +12,24 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CallTask implements Callable<Object> {
 
-    // 执行任务次数
-    private int doTaskNumber;
-    private int i = 0;
-    private CountDownLatch countDownLatch = null;
+    private int  i = 0;
     private Logger logger = LoggerFactory.getLogger(CallTask.class);
 
     public CallTask(){}
 
-    public CallTask(int doTaskNumber){
-        this.doTaskNumber = doTaskNumber;
-    }
 
-    private CountDownLatch getCountDownLatch(int doTaskNumber){
-        countDownLatch = new CountDownLatch(doTaskNumber);
-        return countDownLatch;
-    }
 
     @Override
-    public Long call() throws Exception {
-        CountDownLatch countDownLatch = getCountDownLatch(doTaskNumber);
+    public String call() throws Exception {
         logger.info("{}线程会暂停5秒后，开始执行CallTask任务",Thread.currentThread().getName());
+        if ("pool-1-thread-2".equals(Thread.currentThread().getName())){
+            Thread.currentThread().sleep(2000);
+        }
+        if ("pool-1-thread-1".equals(Thread.currentThread().getName())){
+            Thread.currentThread().sleep(4000);
+        }
         Thread.currentThread().sleep(4000);
         logger.info("{}线程，执行了CallTask任务，该任务第{}次执行",Thread.currentThread().getName(), ++i);
-        // 执行完任务countDownLatch递减
-        countDownLatch.countDown();
-        return countDownLatch.getCount();
+        return Thread.currentThread().getName();
     }
 }

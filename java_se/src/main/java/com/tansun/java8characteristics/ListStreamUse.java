@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  * @date 2022/8/16 8:17
  * @Copyright © 2020 阿里巴巴
  */
-public class StreamUse {
+public class ListStreamUse {
 
     public static void main(String[] args) {
         List<Person> list = new ArrayList<>();
@@ -25,6 +25,14 @@ public class StreamUse {
         list.add(new Person("wangwu", 14, new BigDecimal(123)));
         list.add(new Person("awang", 16, new BigDecimal(123)));
         list.add(new Person("awang", 16, new BigDecimal(123)));
+
+        // 根据姓名+年龄进行分组，对金额进行求和
+        Map<String, BigDecimal> collect5 = list.stream().collect(
+                Collectors.groupingBy(p -> p.getName() + p.getAge(),
+                        Collectors.reducing(BigDecimal.ZERO, Person::getTotAmt, BigDecimal::add)));
+        List<String> collect6 = list.stream().map(p -> p.getName() + p.getAge()).distinct().collect(Collectors.toList());
+        System.out.println(collect5);
+        System.out.println(collect6);
 
         // 取出前两条数据
         Stream<Person> personStream = list.stream().limit(2);

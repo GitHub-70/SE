@@ -39,13 +39,9 @@ public class RetryUtils {
         }
 
         if (null == r){
-            try {
-                throw new RuntimeException("目标方法重试失败");
-            } catch (RuntimeException e){
-                e.printStackTrace();
-            }
+            throw new RuntimeException("目标方法重试失败");
         }
-        return r;
+        return null;
     }
 
 

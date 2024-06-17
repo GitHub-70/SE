@@ -57,6 +57,18 @@ public class SysRole implements Serializable{
 	public void setModifiedUser(String modifiedUser) {
 		this.modifiedUser = modifiedUser;
 	}
+
+	public SysRole() {
+	}
+
+	/**
+	 *
+	 * @param name
+	 * @param id
+	 */
+	public SysRole(String name, Integer id){
+
+	}
 	@Override
 	public String toString() {
 		return "SysRole [id=" + id + ", name=" + name + ", note=" + note + ", createdTime=" + createdTime

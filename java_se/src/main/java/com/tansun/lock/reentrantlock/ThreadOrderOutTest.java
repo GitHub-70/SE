@@ -21,10 +21,10 @@ public class ThreadOrderOutTest {
     static Thread t1, t2, t3;
 
     public static void main(String[] args) {
-        // 该写法为什么会偶尔出现，未正常输出的情况？
-//        awiateAndSingal();
+        // 该写法为什么会偶尔出现，未正常输出的情况？ 详见：printTask 方法
+        awiateAndSingal();
 
-        parkAndUnpark();
+//        parkAndUnpark();
 
     }
 

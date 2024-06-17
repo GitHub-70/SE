@@ -98,6 +98,7 @@ public class User {
     // 自定义重写 hashcode
     @Override
     public int hashCode() {
+        // 这是一个质数（素数）
         int result = 17;
         result = 31 * result + (id == null ? 0 : id.hashCode());
         result = 31 * result + (name == null ? 0 : name.hashCode());

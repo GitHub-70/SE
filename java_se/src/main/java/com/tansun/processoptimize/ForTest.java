@@ -3,9 +3,12 @@ package com.tansun.processoptimize;
 public class ForTest {
 
     /**
+     * 循环优化原则
      * https://www.cnblogs.com/caoxb/p/15526123.html
      * 对于程序而言，外层循环越大，性能越低，对于数据库而言，永远是小的数据集放在最外层
      * 程序设计原则：小的循环放到最外层，大的循环放在最小层
+     *      减少循环的执行次数  如：2的8次方 和 8的2次方
+     *      在多线程中，会增加CPU的缓存命中率（三级缓存共享），比从内存中拿数据更快
      *
      * @param args
      */

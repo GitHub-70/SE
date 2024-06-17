@@ -14,12 +14,12 @@ public class SimulationRequestNumberAtomic {
     // 用户数
     private static Integer userNum = 100;
     // 将普通变量count升级为原子变量
-    static AtomicInteger atomicInteger = new AtomicInteger(count);
+    static AtomicInteger atomicInteger = new AtomicInteger(0);
 
     // 模拟访问网站的方法
     public static void request() throws InterruptedException {
         // 模拟访问网站耗时5毫秒
-        TimeUnit.MILLISECONDS.sleep(5);
+//        TimeUnit.MILLISECONDS.sleep(5);
         /**
          *  Q:分析count++非原子操作
          *      count++编译后，由3步指令执行
@@ -50,7 +50,7 @@ public class SimulationRequestNumberAtomic {
                 public void run() {
                     // 模拟每个用户访问 10次
                     try {
-                        for (int j = 0; j < 10; j++) {
+                        for (int j = 0; j < 1000000; j++) {
                             request();
                         }
                     } catch (InterruptedException e) {

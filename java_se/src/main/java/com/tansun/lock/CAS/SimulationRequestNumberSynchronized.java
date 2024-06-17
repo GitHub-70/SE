@@ -34,7 +34,7 @@ public class SimulationRequestNumberSynchronized {
     // 模拟访问网站的方法
     public synchronized static void request() throws InterruptedException {
         // 模拟访问网站耗时5毫秒
-        TimeUnit.MILLISECONDS.sleep(5);
+//        TimeUnit.MILLISECONDS.sleep(5);
         /**
          *  Q:分析count++非原子操作
          *      count++编译后，由3步指令执行

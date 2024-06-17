@@ -1,5 +1,7 @@
 package com.tansun.lock.CAS;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -34,7 +36,7 @@ public class SimulationRequestNumCAS {
     // 模拟访问网站的方法
     public static void request() throws InterruptedException {
         // 模拟访问网站耗时5毫秒
-        TimeUnit.MILLISECONDS.sleep(5);
+//        TimeUnit.MILLISECONDS.sleep(5);
         /**
          *  Q:分析count++非原子操作
          *      count++编译后，由3步指令执行
@@ -68,21 +70,21 @@ public class SimulationRequestNumCAS {
     public static int getCount(){return count;}
 
     public static void main(String[] args) throws InterruptedException {
+
         // 记录当前时间
         long startTime = System.currentTimeMillis();
-
         // 线程数量
         Integer threadSize = 100;
         // 设定初始值大小为threadSize
         final CountDownLatch countDownLatch = new CountDownLatch(threadSize);
-
+        Thread thread;
         // 模拟100个用户来访问网站，每个用户访问10次
         for (int i = 0; i < userNum; i++) {
-            new Thread(new Runnable() {
+            thread = new Thread(new Runnable() {
                 public void run() {
                     // 模拟每个用户访问 10次
                     try {
-                        for (int j = 0; j < 10; j++) {
+                        for (int j = 0; j < 1000000; j++) {
                             request();
                         }
                     } catch (InterruptedException e) {
@@ -91,8 +93,11 @@ public class SimulationRequestNumCAS {
                         countDownLatch.countDown();// 每个用户访问完后递减
                     }
                 }
-            }).start();
+            });
+            thread.start();
         }
+
+//        threads.forEach(t->t.start());
         // 怎么保证100个线程执行 结束之后,在执行后面代码 利用CountDownLatch
         countDownLatch.await();// 一直等到每个用户访问完后，即为0，才执行下面代码
         long endTime = System.currentTimeMillis();

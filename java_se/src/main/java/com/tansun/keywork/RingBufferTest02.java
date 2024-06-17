@@ -9,11 +9,13 @@ import java.util.concurrent.CountDownLatch;
  */
 public class RingBufferTest02 {
 
+    // 一亿次
     public static Long count = 100000000l;
 
     private static class  T {
         private long p1, p2, p3, p4, p5, p6, p7;// 56字节
         private volatile long x = 0l;// 8字节
+
 //        private long p8, p9, p10, p11, p12, p13, p14, p15; // 64字节
     }
 

@@ -36,31 +36,31 @@ public class NioSelector {
         // 3.分配指定大小的缓冲区
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         // 4.通过FileChannel读取本地文件，再通过SocketChannel发送到服务端
-//        FileChannel inFileChannel = FileChannel.open(Paths.get(UrlUtils.getUrl()), StandardOpenOption.READ);
+        FileChannel inFileChannel = FileChannel.open(Paths.get(UrlUtils.getUrl()), StandardOpenOption.READ);
 
-        Scanner input = new Scanner(System.in);
-
-        // 当用户有输入时
-        Date date = new Date();
-        while (input.hasNext()){
-            String inputString = input.nextLine();
-            String cureentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-            byteBuffer.put((cureentTime+"\n"+inputString).getBytes());
-            byteBuffer.flip();
-            // 将 byteBuffer中的信息通过 通道载体 发送到服务端
-            socketChannel.write(byteBuffer);
-            // 恢复到新生成的 buffer 状态
-            byteBuffer.clear();
-        }
-
-//        while (inFileChannel.read(byteBuffer) != -1){
-//            byteBuffer.flip(); // 读写模式切换
+//        Scanner input = new Scanner(System.in);
+//
+//        // 当用户有输入时
+//        Date date = new Date();
+//        while (input.hasNext()){
+//            String inputString = input.nextLine();
+//            String cureentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+//            byteBuffer.put((cureentTime+"\n"+inputString).getBytes());
+//            byteBuffer.flip();
+//            // 将 byteBuffer中的信息通过 通道载体 发送到服务端
 //            socketChannel.write(byteBuffer);
-//            byteBuffer.clear();// 将Buffer的容量恢复至capacity，即将 可操作数据limit大小 恢复到capacity位置。
+//            // 恢复到新生成的 buffer 状态
+//            byteBuffer.clear();
 //        }
-        // 5.关闭通道
-//        socketChannel.close();
-//        inFileChannel.close();
+
+        while (inFileChannel.read(byteBuffer) != -1){
+            byteBuffer.flip(); // 读写模式切换
+            socketChannel.write(byteBuffer);
+            byteBuffer.clear();// 将Buffer的容量恢复至capacity，即将 可操作数据limit大小 恢复到capacity位置。
+        }
+//         5.关闭通道
+        socketChannel.close();
+        inFileChannel.close();
     }
 
     /**

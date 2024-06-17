@@ -111,7 +111,7 @@ public class BigDecimalTest {
 
     /* *
      * @Author 吴槐
-     * @Description 金额常见正确错误写法
+     * @Description 金额常见正确错误写法（数值型会丢失精度）
      * @Date 14:41 2022/6/15
      * @Param 
      * @return void

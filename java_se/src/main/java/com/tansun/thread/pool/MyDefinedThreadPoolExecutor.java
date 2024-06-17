@@ -27,7 +27,7 @@ public class MyDefinedThreadPoolExecutor {
 
 	public static void main(String[] args) {
 		blockingQueue = new LinkedBlockingQueue<>(2);// 队列任务数为2
-		blockingQueue = new ArrayBlockingQueue<>(2);
+//		blockingQueue = new ArrayBlockingQueue<>(2);
 		atomicLong = new AtomicLong(1);// 线程安全的整数自增序列类,从1开始
 
 		// 获取线程工厂

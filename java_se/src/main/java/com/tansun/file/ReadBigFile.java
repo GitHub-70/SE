@@ -9,11 +9,12 @@ import java.nio.channels.FileChannel;
 
 public class ReadBigFile {
     public static void main(String[] args) throws IOException {
-        String url = "E:\\file\\20230309\\stringformat.txt";
+        String url = "E:\\file\\testdelete\\cfmfile.txt";
         File f = new File(url);
         FileInputStream fis = new FileInputStream(f);// 2147483647
         FileChannel channel = fis.getChannel();
 
+        // 文件大小
         long length = f.length();
         // 当你面临java.lang.OutOfMemoryError: Requested array size exceeds VM limit,
         // 意味着应用因为尝试分配一个大于JVM可以支持的数组而报错crash.

@@ -13,7 +13,7 @@ public class JsonArrayTest {
 
 	//准备数据
 	static String jsonarr = "[{pid:023,name:离散,age:20300},{pid:024,name:喜禾,age:30200}]";
-	
+
 	public static void main(String[] args) {
 		
 		jsonConvertArray();

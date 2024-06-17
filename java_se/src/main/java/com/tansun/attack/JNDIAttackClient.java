@@ -28,6 +28,7 @@ import java.rmi.registry.Registry;
  *  比如：Context.PROVIDER_URL。
  *
  */
+@Deprecated
 public class JNDIAttackClient {
 
     public static void main(String[] args) throws RemoteException, AlreadyBoundException, MalformedURLException, NotBoundException, NamingException {
