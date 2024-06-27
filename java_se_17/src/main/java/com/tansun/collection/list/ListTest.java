@@ -20,6 +20,7 @@ public class ListTest {
     private static Set<String> set;
 
     public static void main(String[] args) {
+
         listNoChangeSize();
 
     }
@@ -31,7 +32,8 @@ public class ListTest {
     private static void listNoChangeSize() {
         List<String> miJi = List.of("九阴真经");
         List<String> strings = List.of("他强任他强", "清风拂山岗", "他横任他横", "明月照大江");
-        System.out.println(list);
+        System.out.println(strings.size());
+//        strings.add("乾坤大挪移");
     }
 
 

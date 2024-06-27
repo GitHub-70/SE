@@ -1,9 +1,6 @@
 package com.tansun.algorithm.leetcode.arrayorstring;
 
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * 合并两个递增有序的数组，通过修改nums1数组来存储合并后的结果，确保合并后的数组仍保持有序
@@ -16,9 +13,6 @@ public class MergeTwoSortArray {
         int[] nums2 = {2,5,6};
 //        merge(nums1,4,nums2,3);
         merge2(nums1,4,nums2,3);
-        for (int i = 0; i < nums1.length; i++) {
-            System.out.print(nums1[i] + " ");
-        }
 
     }
 

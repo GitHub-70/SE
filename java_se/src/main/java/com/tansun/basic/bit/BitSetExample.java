@@ -19,6 +19,7 @@ import java.util.BitSet;
  */
 public class BitSetExample {
     public static void main(String[] args) {
+        // 1字节(b-byte)=8bit,utf-8编码时，一个字符=3个字节
         BitSet bitSet = new BitSet(8); // 创建一个包含8位的BitSet
 
         // 设置第2位和第5位为1

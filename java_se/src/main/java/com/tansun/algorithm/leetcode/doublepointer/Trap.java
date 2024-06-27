@@ -1,4 +1,4 @@
-package com.tansun.algorithm.leetcode.arrayorstring;
+package com.tansun.algorithm.leetcode.doublepointer;
 
 import java.util.Deque;
 import java.util.LinkedList;
