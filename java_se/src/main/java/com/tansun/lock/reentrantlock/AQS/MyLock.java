@@ -14,6 +14,16 @@ import java.util.concurrent.locks.Lock;
  *
  *  加锁与释放锁的操作 均需具备原子性
  *  加锁与释放锁的操作 均需同一线程
+ *
+ *  AQS 的关键数据结构
+ *  1.同步状态 (state)：
+ *  一个整型成员变量，用于表示锁的状态，例如是否被占用、被占用的次数等。
+ *  2.CLH 锁队列：
+ *  一个 FIFO 等待队列，用于存储等待获取锁的线程节点。
+ *  CLH 锁队列是一种高效的无锁队列算法。
+ *  3.Node 类：
+ *  表示 CLH 锁队列中的节点，每个节点代表一个等待获取锁的线程
+ *
  */
 public class MyLock implements Lock {
 

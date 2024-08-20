@@ -30,7 +30,7 @@ public class InterruptExample extends Thread {
             e.printStackTrace();
         }
         System.out.println(String.format("自定义线程再运行，中断之前，中断状态--%s",thread.isInterrupted()));
-        // 由运行变为中断，第一次调用 isInterrupted() 为 True,之后再调用 isInterrupted() 均为 false;
+        // 由运行变为中断，第一次调用 interrupted() 为 True,之后再调用 interrupted() 均为 false;
         thread.interrupt();  // 主线程中断 自定义线程（中断状态为 TRUE）
         /**
          * 该 interrupted() 方法
